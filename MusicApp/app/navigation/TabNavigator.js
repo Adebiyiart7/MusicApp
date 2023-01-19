@@ -21,7 +21,8 @@ const TabNavigator = () => {
         tabBarLabelPosition: "below-icon",
         tabBarStyle: {
           height: 57,
-          backgroundColor: colors.background100
+          backgroundColor: colors.background100,
+          borderTopColor: colors.border100,
         },
         tabBarLabelStyle: {
           marginBottom: 5,
