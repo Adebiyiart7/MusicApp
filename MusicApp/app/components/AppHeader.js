@@ -1,6 +1,11 @@
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Dimensions
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useDimensions } from "@react-native-community/hooks";
 
 // LOCAL IMPORTS
 import defaultStyles from "../config/styles";
@@ -13,7 +18,7 @@ const AppHeader = ({
   RightIconExtra,
   hasGoBack
 }) => {
-  const { width: screenWidth } = useDimensions().screen;
+  const screenWidth = Dimensions.get("screen").width;
 
   return (
     <View style={styles.container}>
@@ -27,12 +32,24 @@ const AppHeader = ({
           />
         </TouchableOpacity>
       )}
-      <AppText
-        numberOfLines={1}
-        style={[styles.title, { width: screenWidth - 138 }]}
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center"
+        }}
       >
-        {title}
-      </AppText>
+        <Image
+          source={require("../assets/images/logo-outline.png")}
+          style={{ height: 30, width: 30}}
+        />
+        <AppText
+          numberOfLines={1}
+          style={[styles.title, { width: screenWidth - 138 }]}
+        >
+          {title}
+        </AppText>
+      </View>
       {RightIcon && (
         <TouchableOpacity style={styles.right}>{RightIcon}</TouchableOpacity>
       )}
@@ -52,7 +69,7 @@ const styles = StyleSheet.create({
     color: defaultStyles.colors.primaryText,
     backgroundColor: defaultStyles.colors.background100,
     padding: 10,
-    borderRadius: 50,
+    borderRadius: 50
   },
   container: {
     display: "flex",
@@ -60,7 +77,7 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingVertical: 16,
     alignItems: "center",
-    minHeight: 70,
+    minHeight: 70
   },
   left: {},
   right: {
@@ -69,14 +86,14 @@ const styles = StyleSheet.create({
     color: defaultStyles.colors.primaryText,
     backgroundColor: defaultStyles.colors.background100,
     padding: 10,
-    borderRadius: 50,
+    borderRadius: 50
   },
   rightExtra: {
-    right: 0,
+    right: 0
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    marginLeft: 10,
-  },
+    marginLeft: 10
+  }
 });
