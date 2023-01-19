@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "MusicApp",
+     "description": "Music app",
     "slug": "MusicApp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,10 +25,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.adebiyiart.MusicApp"
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4b7e019d-8b97-4817-b5f8-0d3299e04694"
+      }
     }
   }
 }

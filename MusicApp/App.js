@@ -17,3 +17,8 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+
+/**
+ *  PUBLISH APK: eas build -p android --profile preview
+ */

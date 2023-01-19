@@ -8,6 +8,22 @@ const defaultStyles = {
     fontWeight: "bold",
     marginBottom: 10
   },
+  headingFont: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginVertical: 15
+  },
+  headingFlex: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  seeAll: {
+    color: colors.primaryColor,
+    fontWeight: "bold",
+    marginTop: 2
+  }
   // gridStyle: {
   //   display: "flex",
   //   justifyContent: "center",
