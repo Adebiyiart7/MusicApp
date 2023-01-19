@@ -1,14 +1,14 @@
-import { StyleSheet, Platform, View, ImageBackground } from "react-native";
+import { StyleSheet, Platform, View, ImageBackground, Dimensions } from "react-native";
 import React, { useState } from "react";
 import Carousel from "react-native-reanimated-carousel";
-import { useDimensions } from "@react-native-community/hooks";
 
 // LOCAL IMPORTS
 import Screen from "../components/Screen";
 
 const WalkThroughScreen = () => {
   const [activeImage, setActiveImage] = useState(0);
-  const { width: screenWidth, height: screenHeight } = useDimensions().screen;
+  // const screenWidth  = Dimensions.get("screen").width;
+  // const screenHeight  = Dimensions.get("screen").height;
 
   const walk_through_images = [
     { image: require("../assets/images/walk_through1.png") },
@@ -18,8 +18,8 @@ const WalkThroughScreen = () => {
 
   return (
     <ImageBackground
-      style={[styles.image, { width: screenWidth, height: 675 }]}
-      source={walk_through_images[activeImage].image}
+    // style={[styles.image, { width: screenWidth, height: 675 }]}
+    // source={walk_through_images[activeImage].image}
     ></ImageBackground>
   );
 };
