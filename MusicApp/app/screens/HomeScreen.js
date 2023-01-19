@@ -10,6 +10,7 @@ import colors from "../config/colors";
 import ScrollableTabs from "../components/ScrollableTabs";
 import reducers from "../reducers";
 import defaultStyles from "../config/styles";
+import RecentlyPlayed from "../components/home/RecentlyPlayed";
 
 const tabData = [
   { _id: "1", name: "suggested" },
@@ -34,10 +35,7 @@ const HomeScreen = ({ navigation }) => {
         title={"Music"}
       />
       <ScrollableTabs data={tabData} state={state} dispatch={dispatch} />
-      <View style={defaultStyles.headingFlex}>
-        <AppText style={defaultStyles.headingFont}>Recently Played</AppText>
-        <TouchableOpacity><AppText style={defaultStyles.seeAll}>See All</AppText></TouchableOpacity>
-      </View>
+      <RecentlyPlayed />
     </Screen>
   );
 };

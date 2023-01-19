@@ -1,6 +1,6 @@
 import { StyleSheet, Platform, View, ImageBackground, Dimensions } from "react-native";
 import React, { useState } from "react";
-import Carousel from "react-native-reanimated-carousel";
+// import Carousel from "react-native-reanimated-carousel";
 
 // LOCAL IMPORTS
 import Screen from "../components/Screen";

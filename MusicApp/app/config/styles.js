@@ -9,9 +9,9 @@ const defaultStyles = {
     marginBottom: 10
   },
   headingFont: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "bold",
-    marginVertical: 15
+    marginVertical: 16
   },
   headingFlex: {
     display: "flex",
