@@ -23,16 +23,6 @@ const BottomSheet = ({
             style={styles.backdrop}
           ></TouchableOpacity>
           <View style={styles.modalView}>
-            {/* <TouchableOpacity
-              onPress={() => setBottomSheetVisible(false)}
-              style={styles.closeButtonContainer}
-            >
-              <FontAwesome
-                name="times"
-                size={32}
-                style={styles.closeButton}
-              />
-            </TouchableOpacity> */}
             {bottomSheetContent}
           </View>
         </View>
@@ -62,7 +52,7 @@ const styles = StyleSheet.create({
     right: 5,
   },
   modalView: {
-    backgroundColor: "white",
+    backgroundColor: colors.white,
     borderTopStartRadius: defaultStyles.primaryBorderRadius,
     borderTopEndRadius: defaultStyles.primaryBorderRadius,
     width: "100%",
