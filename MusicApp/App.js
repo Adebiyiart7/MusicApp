@@ -1,5 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar, Text } from "react-native";
+import { StatusBar } from "react-native";
 
 
 // LOCAL IMPORTS
@@ -14,7 +14,6 @@ export default function App() {
         barStyle={theme === "light" ? "dark-content" : "light-content"}
       />
       <AppNavigator />
-      {/* <Text>Test</Text> */}
     </NavigationContainer>
   );
 }

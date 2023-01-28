@@ -9,8 +9,11 @@ import AppHeader from "../components/AppHeader";
 import colors from "../config/colors";
 import ScrollableTabs from "../components/ScrollableTabs";
 import reducers from "../reducers";
-import defaultStyles from "../config/styles";
-import RecentlyPlayed from "../components/home/RecentlyPlayed";
+import Suggested from "../components/home/tabRenders/Suggested";
+import Songs from "../components/home/tabRenders/Songs";
+import Artists from "../components/home/tabRenders/Artists";
+import Albums from "../components/home/tabRenders/Albums";
+import Favorites from "../components/home/tabRenders/Favorites";
 
 const tabData = [
   { _id: "1", name: "suggested" },
@@ -22,20 +25,48 @@ const tabData = [
 
 const HomeScreen = ({ navigation }) => {
   const [state, dispatch] = useReducer(reducers.scrollableTabs, {
-    active: "suggested"
+    active: "songs"
   });
 
+  const Render = () => {
+    if (state.active === "suggested") {
+      return <Suggested />;
+    }
+
+    if (state.active === "songs") {
+      return <Songs />;
+    }
+
+    if (state.active === "artists") {
+      return <Artists />;
+    }
+
+    if (state.active === "albums") {
+      return <Albums />;
+    }
+
+    if (state.active === "favorites") {
+      return <Favorites />;
+    }
+  };
+
   return (
-    <Screen>
-      <AppHeader
-        RightIconExtra={
-          <Ionicons name="search" size={24} color={colors.primaryText} />
-        }
-        navigation={navigation}
-        title={"Music"}
-      />
-      <ScrollableTabs data={tabData} state={state} dispatch={dispatch} />
-      <RecentlyPlayed />
+    <Screen
+      scrollable={false}
+      header={
+        <>
+          <AppHeader
+            RightIconExtra={
+              <Ionicons name="search" size={24} color={colors.primaryText} />
+            }
+            navigation={navigation}
+            title={"Music"}
+          />
+          <ScrollableTabs data={tabData} state={state} dispatch={dispatch} />
+        </>
+      }
+    >
+      <Render />
     </Screen>
   );
 };

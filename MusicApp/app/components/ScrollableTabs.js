@@ -23,7 +23,7 @@ const ScrollableTabs = ({ data, state, dispatch }) => {
   };
 
   return (
-    <View>
+    <View style={styles.tabs}>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -38,7 +38,7 @@ const ScrollableTabs = ({ data, state, dispatch }) => {
             ]}
             key={index}
             onPress={() =>
-              dispatch({type: "activeScrollableTab", payload: item.name})
+              dispatch({ type: "activeScrollableTab", payload: item.name })
             }
           >
             <AppText
@@ -52,6 +52,7 @@ const ScrollableTabs = ({ data, state, dispatch }) => {
           </TouchableOpacity>
         )}
       />
+      <View style={styles.line} />
     </View>
   );
 };
@@ -61,12 +62,22 @@ export default ScrollableTabs;
 const styles = StyleSheet.create({
   item: {
     paddingVertical: 6,
-    paddingHorizontal: 12,
+    paddingHorizontal: 12
+  },
+  line: {
+    position: "absolute",
+    width: "100%",
+    bottom: 1,
+    zIndex: -1,
+    borderTopColor: colors.border100, borderTopWidth: 1, paddingBottom: -10,
+  },
+  list: {},
+  tabs: {
+    position: "relative",
   },
   text: {
     fontSize: 16,
     textTransform: "capitalize",
     color: colors.lightText
   },
-  list: {}
 });

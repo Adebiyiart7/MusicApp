@@ -23,6 +23,9 @@ const defaultStyles = {
     color: colors.primaryColor,
     fontWeight: "bold",
     marginTop: 2
+  },
+  horizontalScroll: {
+    marginBottom: 5
   }
   // gridStyle: {
   //   display: "flex",
