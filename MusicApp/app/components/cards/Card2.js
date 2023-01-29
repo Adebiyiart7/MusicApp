@@ -13,7 +13,7 @@ import colors from "../../config/colors";
 
 const imageSize = 80;
 
-const Card2 = ({ image, title, subTitle, actions }) => {
+const Card2 = ({ image, title, subTitle, actions, onPress }) => {
   const { width: screenWidth } = Dimensions.get("screen");
 
   const titleWidth = () => {
@@ -48,7 +48,12 @@ const Card2 = ({ image, title, subTitle, actions }) => {
       </View>
       <View style={styles.actions}>
         {actions.map((item) => (
-          <TouchableOpacity key={item._id}>{item.obj}</TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => onPress( item._id )}
+            key={item._id}
+          >
+            {item.obj}
+          </TouchableOpacity>
         ))}
       </View>
     </View>
