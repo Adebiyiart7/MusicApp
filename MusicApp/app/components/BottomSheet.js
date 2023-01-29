@@ -32,43 +32,43 @@ const BottomSheet = ({
 };
 const styles = StyleSheet.create({
   backdrop: {
-    flex: 1,
+    flex: 1
   },
   centeredView: {
     flex: 1,
     display: "flex",
     backgroundColor: "#00000099",
     position: "relative",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   closeButton: {
     marginTop: 4,
     marginRight: 3,
-    color: defaultStyles.colors.primaryColor,
+    color: defaultStyles.colors.primaryColor
   },
   closeButtonContainer: {
     position: "absolute",
     top: 5,
-    right: 5,
+    right: 5
   },
   modalView: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.background100,
     borderTopStartRadius: defaultStyles.primaryBorderRadius,
     borderTopEndRadius: defaultStyles.primaryBorderRadius,
     width: "100%",
     // position: "absolute",
     bottom: 0,
     paddingTop: 20, // 35,
-    maxHeight: 500,
+    maxHeight: 500
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 15
   },
   textStyle: {
     color: "white",
     fontWeight: "bold",
-    textAlign: "center",
-  },
+    textAlign: "center"
+  }
 });
 
 export default BottomSheet;
