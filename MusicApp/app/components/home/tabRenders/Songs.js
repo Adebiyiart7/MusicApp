@@ -9,14 +9,32 @@ import colors from "../../../config/colors";
 import Card2 from "../../cards/Card2";
 import { songs } from "../../../db/recentlyPlayed";
 import BottomSheet from "../../BottomSheet";
-import ListCard from "../../cards/ListCard";
+import ListCard1 from "../../cards/ListCard1";
+import ItemSeparatorComponent from "../../ItemSeparatorComponent";
+import MoreActions from "../../songs/MoreActions";
 
 const Songs = () => {
-  const [bottomSheetVisible, setBottomSheetVisible] = useState(true);
+  const [clickedID, setClickedID] = useState(null);
+  const [sortBottomSheetVisible, setSortBottomSheetVisible] = useState(false);
+  const [moreActionsBottomSheetVisible, setMoreActionsBottomSheetVisible] =
+    useState(false);
+
+  const clickedObject = () => {
+    return songs.find((item) => item._id === clickedID);
+  };
+
+  const handleOnPress = (actionID, objectID) => {
+    if (actionID === "1") {
+    } else if (actionID === "2") {
+      setClickedID(objectID);
+      setMoreActionsBottomSheetVisible(true);
+    }
+  };
 
   const actions = [
     {
-      _id: "0",
+      _id: "1",
+      actions: "play",
       obj: (
         <MaterialCommunityIcons
           name="play-circle"
@@ -27,7 +45,8 @@ const Songs = () => {
       )
     },
     {
-      _id: "1",
+      _id: "2",
+      actions: "more",
       obj: (
         <MaterialCommunityIcons
           name="dots-vertical"
@@ -58,14 +77,18 @@ const Songs = () => {
     },
     {
       _id: "5",
-      title: "date added"
+      title: "year"
     },
     {
       _id: "6",
-      title: "date modified"
+      title: "date added"
     },
     {
       _id: "7",
+      title: "date modified"
+    },
+    {
+      _id: "8",
       title: "composer"
     }
   ];
@@ -78,12 +101,18 @@ const Songs = () => {
             <FlatList
               data={sortData}
               keyExtractor={(item) => item._id}
-              renderItem={({ item }) => <ListCard title={item.title} />}
+              renderItem={({ item }) => <ListCard1 title={item.title} />}
+              ItemSeparatorComponent={<ItemSeparatorComponent />}
             />
           </View>
         }
-        bottomSheetVisible={bottomSheetVisible}
-        setBottomSheetVisible={setBottomSheetVisible}
+        bottomSheetVisible={sortBottomSheetVisible}
+        setBottomSheetVisible={setSortBottomSheetVisible}
+      />
+      <BottomSheet
+        bottomSheetContent={<MoreActions item={clickedObject()} />}
+        bottomSheetVisible={moreActionsBottomSheetVisible}
+        setBottomSheetVisible={setMoreActionsBottomSheetVisible}
       />
       <View
         style={[
@@ -92,7 +121,7 @@ const Songs = () => {
         ]}
       >
         <AppText style={defaultStyles.headingFont}>700 songs</AppText>
-        <TouchableOpacity onPress={() => setBottomSheetVisible(true)}>
+        <TouchableOpacity onPress={() => setSortBottomSheetVisible(true)}>
           <AppText style={defaultStyles.seeAll}>
             Ascending &nbsp;
             <MaterialCommunityIcons name="sort" size={14} />
@@ -106,6 +135,7 @@ const Songs = () => {
           keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
             <Card2
+              _id={item._id}
               image={item.image}
               title={item.title}
               subTitle={{
@@ -113,6 +143,7 @@ const Songs = () => {
                 right: `${item.duration} mins`
               }}
               actions={actions}
+              onPress={(actionID) => handleOnPress(actionID, item._id)}
             />
           )}
         />
