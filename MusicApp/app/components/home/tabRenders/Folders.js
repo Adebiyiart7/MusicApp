@@ -20,7 +20,7 @@ import folders from "../../../db/folrders";
 import Card2 from "../../cards/Card2";
 
 const Folders = () => {
-  const [sortBottomSheetVisible, setSortBottomSheetVisible] = useState(true);
+  const [sortBottomSheetVisible, setSortBottomSheetVisible] = useState(false);
 
   return (
     <View>
