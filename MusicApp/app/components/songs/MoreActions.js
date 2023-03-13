@@ -18,7 +18,7 @@ const MoreActions = ({ item }) => {
       obj: (
         <Ionicons
           name="heart-outline"
-          color={colors.primaryText}
+          color={colors.lightText}
           size={30}
           style={styles.icons}
         />
@@ -30,17 +30,113 @@ const MoreActions = ({ item }) => {
     {
       _id: "1",
       name: "Play Next",
-      icon: <MaterialCommunityIcons name="account" />
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="skip-next-circle-outline"
+        />
+      )
     },
-    { _id: "2", name: "Add to Playing Queue", icon: "" },
-    { _id: "3", name: "Add to Play List", icon: "" },
-    { _id: "4", name: "Go to Album", icon: "" },
-    { _id: "5", name: "Go to Artist", icon: "" },
-    { _id: "6", name: "Details", icon: "" },
-    { _id: "7", name: "Set as Ringtone", icon: "" },
-    { _id: "8", name: "Add to Blacklist", icon: "" },
-    { _id: "9", name: "Share", icon: "" },
-    { _id: "10", name: "Delete from Device", icon: "" }
+    {
+      _id: "2",
+      name: "Add to Playing Queue",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="clipboard-play-multiple-outline"
+        />
+      )
+    },
+    {
+      _id: "3",
+      name: "Add to Play List",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="playlist-plus"
+        />
+      )
+    },
+    {
+      _id: "4",
+      name: "Go to Album",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="album"
+        />
+      )
+    },
+    {
+      _id: "5",
+      name: "Go to Artist",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="account-outline"
+        />
+      )
+    },
+    {
+      _id: "6",
+      name: "Details",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="information-outline"
+        />
+      )
+    },
+    {
+      _id: "7",
+      name: "Set as Ringtone",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="phone-outline"
+        />
+      )
+    },
+    {
+      _id: "8",
+      name: "Add to Blacklist",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="cancel"
+        />
+      )
+    },
+    {
+      _id: "9",
+      name: "Share",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="share-outline"
+        />
+      )
+    },
+    {
+      _id: "10",
+      name: "Delete from Device",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="delete-outline"
+        />
+      )
+    }
   ];
 
   return (
@@ -57,6 +153,8 @@ const MoreActions = ({ item }) => {
       />
       <View style={styles.options}>
         <FlatList
+          showsVerticalScrollIndicator={false}
+          style={{maxHeight: 350}}
           data={options}
           keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
@@ -75,7 +173,7 @@ export default MoreActions;
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    paddingTop: 0
+    paddingTop: 0,
   },
   icons: {
     marginLeft: 14

@@ -39,10 +39,10 @@ const AppHeader = ({
           justifyContent: "center"
         }}
       >
-        <Image
+        {!hasGoBack && <Image
           source={require("../assets/images/logo-outline.png")}
           style={{ height: 30, width: 30}}
-        />
+        />}
         <AppText
           numberOfLines={1}
           style={[styles.title, { width: screenWidth - 138 }]}

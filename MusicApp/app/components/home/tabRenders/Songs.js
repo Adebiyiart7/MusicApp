@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 // LOCAL IMPORTS
 import AppText from "../../AppText";
@@ -12,12 +13,49 @@ import BottomSheet from "../../BottomSheet";
 import ListCard1 from "../../cards/ListCard1";
 import ItemSeparatorComponent from "../../ItemSeparatorComponent";
 import MoreActions from "../../songs/MoreActions";
+import routes from "../../../config/routes";
 
+ export const sortData = [
+   {
+     _id: "1",
+     title: "ascending"
+   },
+   {
+     _id: "2",
+     title: "descending"
+   },
+   {
+     _id: "3",
+     title: "artist"
+   },
+   {
+     _id: "4",
+     title: "album"
+   },
+   {
+     _id: "5",
+     title: "year"
+   },
+   {
+     _id: "6",
+     title: "date added"
+   },
+   {
+     _id: "7",
+     title: "date modified"
+   },
+   {
+     _id: "8",
+     title: "composer"
+   }
+];
+ 
 const Songs = () => {
   const [clickedID, setClickedID] = useState(null);
   const [sortBottomSheetVisible, setSortBottomSheetVisible] = useState(false);
   const [moreActionsBottomSheetVisible, setMoreActionsBottomSheetVisible] =
     useState(false);
+  const navigation = useNavigation();
 
   const clickedObject = () => {
     return songs.find((item) => item._id === clickedID);
@@ -25,6 +63,7 @@ const Songs = () => {
 
   const handleOnPress = (actionID, objectID) => {
     if (actionID === "1") {
+      navigation.navigate(routes.PLAY_SONG,{ _id: objectID})
     } else if (actionID === "2") {
       setClickedID(objectID);
       setMoreActionsBottomSheetVisible(true);
@@ -55,41 +94,6 @@ const Songs = () => {
           style={styles.icons}
         />
       )
-    }
-  ];
-
-  const sortData = [
-    {
-      _id: "1",
-      title: "ascending"
-    },
-    {
-      _id: "2",
-      title: "descending"
-    },
-    {
-      _id: "3",
-      title: "artist"
-    },
-    {
-      _id: "4",
-      title: "album"
-    },
-    {
-      _id: "5",
-      title: "year"
-    },
-    {
-      _id: "6",
-      title: "date added"
-    },
-    {
-      _id: "7",
-      title: "date modified"
-    },
-    {
-      _id: "8",
-      title: "composer"
     }
   ];
 

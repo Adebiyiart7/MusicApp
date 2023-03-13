@@ -25,7 +25,7 @@ const tabData = [
 
 const HomeScreen = ({ navigation }) => {
   const [state, dispatch] = useReducer(reducers.scrollableTabs, {
-    active: "songs"
+    active: "artists"
   });
 
   const Render = () => {

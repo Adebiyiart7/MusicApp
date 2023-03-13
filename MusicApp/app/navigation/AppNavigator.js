@@ -7,8 +7,24 @@ import routes from "../config/routes";
 import SplashScreen from "../screens/SplashScreen";
 import WalkThroughScreen from "../screens/WalkThroughScreen";
 import TabNavigator from "./TabNavigator";
+import PlaySongScreen from "../screens/PlaySongScreen";
 
 const Stack = createStackNavigator();
+
+const cardStyleInterpolator = ({ current: { progress } }) => ({
+  cardStyle: {
+    opacity: progress,
+    transform: [
+      {
+        translateX: progress.interpolate({
+          inputRange: [0, 1],
+          outputRange: [500, 0],
+          extrapolate: "clamp"
+        })
+      }
+    ]
+  }
+});
 
 const AppNavigator = () => {
   return (
@@ -22,6 +38,16 @@ const AppNavigator = () => {
       <Stack.Screen
         name={routes.WALK_THROUGHT}
         component={WalkThroughScreen}
+        options={{
+          cardStyleInterpolator: cardStyleInterpolator
+        }}
+      />
+      <Stack.Screen
+        name={routes.PLAY_SONG}
+        component={PlaySongScreen}
+        options={{
+          cardStyleInterpolator: cardStyleInterpolator
+        }}
       />
       <Stack.Screen name={routes.TAB} component={TabNavigator} />
     </Stack.Navigator>

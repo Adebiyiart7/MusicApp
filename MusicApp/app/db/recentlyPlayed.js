@@ -3,7 +3,7 @@ const songs = [
     _id: "1",
     title: "Asiwaju with long text, and even longer",
     image: require("../assets/images/m1.png"),
-    duration: 3.66,
+    duration: "03.66",
     link: "",
     artist: {
       name: "Ruger",
@@ -14,7 +14,7 @@ const songs = [
     _id: "2",
     title: "soso",
     image: require("../assets/images/m2.png"),
-    duration: 7.33,
+    duration: "07.33",
     link: "",
     artist: {
       name: "Omah Lay",
@@ -25,7 +25,7 @@ const songs = [
     _id: "3",
     title: "Xtra Cool",
     image: require("../assets/images/m3.png"),
-    duration: 9.56,
+    duration: "09.56",
     link: "",
     artist: {
       name: "Young Jonn",
@@ -36,7 +36,7 @@ const songs = [
     _id: "4",
     title: "Rush",
     image: require("../assets/images/m4.png"),
-    duration: 2.85,
+    duration: "02.85",
     link: "",
     artist: {
       name: "Ayra Starr",
@@ -47,7 +47,7 @@ const songs = [
     _id: "5",
     title: "How Are You (My Friend)",
     image: require("../assets/images/m5.png"),
-    duration: 8.44,
+    duration: "08.44",
     link: "",
     artist: {
       name: "Jonny Drille",
@@ -58,7 +58,7 @@ const songs = [
     _id: "6",
     title: "Common Person",
     image: require("../assets/images/m1.png"),
-    duration: 7.3,
+    duration: "07.3",
     link: "",
     artist: {
       name: "Burna Boy",
@@ -69,7 +69,7 @@ const songs = [
     _id: "7",
     title: "Girlfriend",
     image: require("../assets/images/m2.png"),
-    duration: 5.33,
+    duration: "05.33",
     link: "",
     artist: {
       name: "Rugar",
@@ -80,7 +80,7 @@ const songs = [
     _id: "8",
     title: "Soweto ft. Tempoe",
     image: require("../assets/images/m3.png"),
-    duration: 12.63,
+    duration: "012.63",
     link: "",
     artist: {
       name: "Victony",
@@ -92,7 +92,7 @@ const songs = [
     title: "Organise",
     image: require("../assets/images/m4.png"),
     link: "",
-    duration: 4.62,
+    duration: "04.62",
     artist: {
       name: "Asake",
       avatar: require("../assets/images/artist1.webp")
@@ -102,7 +102,7 @@ const songs = [
     _id: "10",
     title: "For My Hand ft. Ed Sheeran",
     image: require("../assets/images/m5.png"),
-    duration: 4.44,
+    duration: "04.44",
     link: "",
     artist: {
       name: "Burna Boy",
@@ -113,7 +113,7 @@ const songs = [
     _id: "11",
     title: "Electricity",
     image: require("../assets/images/m1.png"),
-    duration: 8.36,
+    duration: "08.36",
     link: "",
     artist: {
       name: "Asake",
