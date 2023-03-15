@@ -8,61 +8,112 @@ import AppText from "../../AppText";
 import defaultStyles from "../../../config/styles";
 import colors from "../../../config/colors";
 import Card2 from "../../cards/Card2";
-import { songs } from "../../../db/recentlyPlayed";
 import BottomSheet from "../../BottomSheet";
 import ListCard1 from "../../cards/ListCard1";
 import ItemSeparatorComponent from "../../ItemSeparatorComponent";
-import MoreActions from "../../songs/MoreActions";
-import routes from "../../../config/routes";
 import { sortData } from "./Songs";
 import { artists } from "../../../db/artists";
+import OptionCard from "../../songs/OptionCard";
+import routes from "../../../config/routes";
 
 const Artists = () => {
-  const [clickedID, setClickedID] = useState(null);
+  const [artistToShow, setArtistToShow] = useState("");
   const [sortBottomSheetVisible, setSortBottomSheetVisible] = useState(false);
-  const [moreActionsBottomSheetVisible, setMoreActionsBottomSheetVisible] =
+  const [artistBottomSheetVisible, setArtistBottomSheetVisible] =
     useState(false);
   const navigation = useNavigation();
 
-  const clickedObject = () => {
-    return songs.find((item) => item._id === clickedID);
-  };
-
-  const handleOnPress = (actionID, objectID) => {
-    if (actionID === "1") {
-      navigation.navigate(routes.PLAY_SONG, { _id: objectID });
-    } else if (actionID === "2") {
-      setClickedID(objectID);
-      setMoreActionsBottomSheetVisible(true);
-    }
-  };
-
-  const actions = [
+  const artistOptions = [
     {
-      _id: "1",
-      actions: "play",
-      obj: (
+      name: "Play",
+      icon: (
         <MaterialCommunityIcons
-          name="play-circle"
-          color={colors.primaryColor}
-          size={30}
-          style={styles.icons}
+          size={25}
+          color={colors.lightText}
+          name="play-circle-outline"
         />
       )
     },
     {
-      _id: "2",
-      actions: "more",
-      obj: (
+      name: "Play Next",
+      icon: (
         <MaterialCommunityIcons
-          name="dots-vertical"
-          color={colors.primaryText}
-          size={24}
-          style={styles.icons}
+          size={25}
+          color={colors.lightText}
+          name="skip-next-circle-outline"
+        />
+      )
+    },
+    {
+      name: "Add to Playing Queue",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="clipboard-play-multiple-outline"
+        />
+      )
+    },
+    {
+      name: "Add to Play List",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="playlist-plus"
+        />
+      )
+    },
+    {
+      name: "Share",
+      icon: (
+        <MaterialCommunityIcons
+          size={25}
+          color={colors.lightText}
+          name="share-outline"
         />
       )
     }
   ];
+
+  const Artist = () => {
+    const artist = artists.find((item) => item._id === artistToShow);
+
+    if (!artist)
+      return (
+        <AppText style={styles.gettingArtist}>Error Getting Artist</AppText>
+      );
+
+    return (
+      <View style={styles.artist}>
+        <TouchableOpacity onPress={() => {
+          setArtistBottomSheetVisible(false)
+          navigation.navigate(routes.ARTIST_DETAILS, {
+          _id: artist._id,
+        })}}>
+
+        <Card2
+          rounded
+          _id={artist._id}
+          image={artist.avatar}
+          title={artist.name}
+          subTitle={{
+            left: `${artist.albumCount} albums`,
+            right: `${artist.songCount} songs`
+          }}
+          />
+          </TouchableOpacity>
+
+        <View style={styles.artistOptions}>
+          <FlatList
+            data={artistOptions}
+            key={(item) => item.name}
+            renderItem={({ item }) => <OptionCard item={item} />}
+          />
+        </View>
+      </View>
+    );
+  };
 
   return (
     <View>
@@ -81,9 +132,9 @@ const Artists = () => {
         setBottomSheetVisible={setSortBottomSheetVisible}
       />
       <BottomSheet
-        bottomSheetContent={<MoreActions item={clickedObject()} />}
-        bottomSheetVisible={moreActionsBottomSheetVisible}
-        setBottomSheetVisible={setMoreActionsBottomSheetVisible}
+        bottomSheetContent={<Artist />}
+        bottomSheetVisible={artistBottomSheetVisible}
+        setBottomSheetVisible={setArtistBottomSheetVisible}
       />
       <View
         style={[
@@ -105,16 +156,23 @@ const Artists = () => {
           data={artists}
           keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
-            <Card2
-              rounded
-              _id={item._id}
-              image={item.avatar}
-              title={item.name}
-              subTitle={{
-                left: `${item.albumCount} albums`,
-                right: `${item.songCount} songs`
+            <TouchableOpacity
+              onPress={() => {
+                setArtistToShow(item._id);
+                setArtistBottomSheetVisible(true);
               }}
-            />
+            >
+              <Card2
+                rounded
+                _id={item._id}
+                image={item.avatar}
+                title={item.name}
+                subTitle={{
+                  left: `${item.albumCount} albums`,
+                  right: `${item.songCount} songs`
+                }}
+              />
+            </TouchableOpacity>
           )}
         />
       </View>
@@ -125,7 +183,22 @@ const Artists = () => {
 export default Artists;
 
 const styles = StyleSheet.create({
+  artist: {
+    padding: 16,
+    paddingTop: 0
+  },
+  artistOptions: {
+    borderTopColor: colors.border100,
+    borderTopWidth: 1,
+    paddingTop: 16,
+    marginTop: 16,
+  },
   icons: {
     marginLeft: 14
+  },
+  gettingArtist: {
+    textAlign: "center",
+    color: colors.mediumText,
+    marginBottom: 20
   }
 });

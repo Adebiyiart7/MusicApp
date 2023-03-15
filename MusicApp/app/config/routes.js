@@ -1,4 +1,7 @@
+import ArtistDetailsScreen from "../screens/ArtistDetailsScreen";
+
 const routes = {
+  ARTIST_DETAILS: "ArtistDetailsScreen",
   TAB: "Tab",
   FAVORITES: "Favorites",
   HOME: "Home",

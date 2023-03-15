@@ -8,6 +8,7 @@ import SplashScreen from "../screens/SplashScreen";
 import WalkThroughScreen from "../screens/WalkThroughScreen";
 import TabNavigator from "./TabNavigator";
 import PlaySongScreen from "../screens/PlaySongScreen";
+import ArtistDetailsScreen from "../screens/ArtistDetailsScreen";
 
 const Stack = createStackNavigator();
 
@@ -45,6 +46,13 @@ const AppNavigator = () => {
       <Stack.Screen
         name={routes.PLAY_SONG}
         component={PlaySongScreen}
+        options={{
+          cardStyleInterpolator: cardStyleInterpolator
+        }}
+      />
+      <Stack.Screen
+        name={routes.ARTIST_DETAILS}
+        component={ArtistDetailsScreen}
         options={{
           cardStyleInterpolator: cardStyleInterpolator
         }}

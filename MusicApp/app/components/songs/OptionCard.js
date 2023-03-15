@@ -1,14 +1,14 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import React from "react";
 import AppText from "../AppText";
 import colors from "../../config/colors";
 
 const OptionCard = ({ item }) => {
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card}>
       <View style={styles.icon}>{item.icon}</View>
       <AppText style={styles.name}>{item.name}</AppText>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     marginRight: 10
   },
   name: {
-    color: colors.lightText
+    color: colors.lightText,
+    fontSize: 15
   }
 });
