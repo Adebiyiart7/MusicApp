@@ -45,9 +45,9 @@ const Card2 = ({ image, title, subTitle, actions, onPress, rounded }) => {
               {subTitle.left}
             </AppText>
 
-            <AppText style={styles.subTitleText}>
+           {subTitle.right && <AppText style={styles.subTitleText}>
               &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{subTitle.right}
-            </AppText>
+            </AppText>}
           </View>
         </AppText>
       </View>
@@ -70,9 +70,10 @@ const styles = StyleSheet.create({
   actions: {
     display: "flex",
     flexDirection: "row",
+    justifyContent: "space-between",
     position: "absolute",
     alignItems: "center",
-    right: 0
+    right: 0,
   },
   card: {
     marginVertical: 10,
