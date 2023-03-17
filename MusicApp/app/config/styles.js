@@ -11,7 +11,8 @@ const defaultStyles = {
   headingFont: {
     fontSize: 17,
     fontWeight: "bold",
-    marginVertical: 16
+    marginVertical: 16,
+    textTransform: "capitalize",
   },
   headingFlex: {
     display: "flex",

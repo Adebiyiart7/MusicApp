@@ -1,4 +1,3 @@
-import ArtistDetailsScreen from "../screens/ArtistDetailsScreen";
 
 const routes = {
   ARTIST_DETAILS: "ArtistDetailsScreen",

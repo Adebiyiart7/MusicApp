@@ -13,7 +13,7 @@ import colors from "../../config/colors";
 
 const imageSize = 80;
 
-const Card2 = ({ image, title, subTitle, actions, onPress, rounded }) => {
+const Card2 = ({ image, Icon, title, subTitle, actions, onPress, rounded }) => {
   const { width: screenWidth } = Dimensions.get("screen");
 
   const titleWidth = () => {
@@ -25,10 +25,14 @@ const Card2 = ({ image, title, subTitle, actions, onPress, rounded }) => {
 
   return (
     <View style={styles.card}>
-      <Image
-        source={image}
-        style={[styles.image, { borderRadius: rounded ? 200 : 15 }]}
-      />
+      {image && (
+        <Image
+          source={image}
+          style={[styles.image, { borderRadius: rounded ? 200 : 15 }]}
+        />
+      )}
+
+      {Icon && Icon}
       <View style={styles.center}>
         <AppText
           numberOfLines={1}
@@ -45,9 +49,11 @@ const Card2 = ({ image, title, subTitle, actions, onPress, rounded }) => {
               {subTitle.left}
             </AppText>
 
-           {subTitle.right && <AppText style={styles.subTitleText}>
-              &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{subTitle.right}
-            </AppText>}
+            {subTitle.right && (
+              <AppText style={styles.subTitleText}>
+                &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{subTitle.right}
+              </AppText>
+            )}
           </View>
         </AppText>
       </View>
@@ -73,7 +79,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     position: "absolute",
     alignItems: "center",
-    right: 0,
+    right: 0
   },
   card: {
     marginVertical: 10,
