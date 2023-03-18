@@ -13,6 +13,7 @@ import AppButton from "../components/AppButton";
 import defaultStyles from "../config/styles";
 import AppText from "../components/AppText";
 import Card2 from "../components/cards/Card2";
+import colors from "../config/colors";
 
 const PlayACategory = ({
   image,
