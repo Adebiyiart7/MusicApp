@@ -22,6 +22,22 @@ import Card2 from "../../cards/Card2";
 const Folders = () => {
   const [sortBottomSheetVisible, setSortBottomSheetVisible] = useState(false);
 
+  
+  const actions = [
+    {
+      _id: "1",
+      actions: "more",
+      obj: (
+        <MaterialCommunityIcons
+          name="dots-vertical"
+          color={colors.primaryText}
+          size={24}
+          style={styles.icons}
+        />
+      )
+    }
+  ];
+
   return (
     <View>
       <BottomSheet
@@ -52,7 +68,7 @@ const Folders = () => {
           </AppText>
         </TouchableOpacity>
       </View>
-      <View >
+      <View>
         <FlatList
           showsVerticalScrollIndicator={false}
           data={folders}
@@ -71,8 +87,8 @@ const Folders = () => {
               subTitle={{
                 left: item.numOfSongs
               }}
-              // actions={actions}
-              // onPress={(actionID) => handleOnPress(actionID, item._id)}
+              actions={actions}
+              onPress={(actionID) => handleOnPress(actionID, item._id)}
             />
           )}
         />
