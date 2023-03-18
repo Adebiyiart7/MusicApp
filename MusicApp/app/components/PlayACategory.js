@@ -1,8 +1,6 @@
 import {
-  FlatList,
   Image,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View
 } from "react-native";
@@ -14,6 +12,8 @@ import defaultStyles from "../config/styles";
 import AppText from "../components/AppText";
 import Card2 from "../components/cards/Card2";
 import colors from "../config/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import routes from "../config/routes";
 
 const PlayACategory = ({
   image,
@@ -21,8 +21,21 @@ const PlayACategory = ({
   subTitleLeft,
   subTitleRight,
   listTitle,
-  listObj
+  listObj,
+  actions,
+  navigation,
+  setClickedID,
+  setMoreActionsBottomSheetVisible
 }) => {
+  const handleOnPress = (actionID, objectID) => {
+    if (actionID === "1") {
+      navigation.navigate(routes.PLAY_SONG, { _id: objectID });
+    } else if (actionID === "2") {
+      setClickedID(objectID);
+      setMoreActionsBottomSheetVisible(true);
+    }
+  };
+
   return (
     <View>
       {image && <Image source={image} style={styles.image} />}

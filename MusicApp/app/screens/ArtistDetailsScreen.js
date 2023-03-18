@@ -23,15 +23,6 @@ const ArtistDetailsScreen = ({ navigation, route }) => {
 
   const artist = artists.find((item) => item._id === route.params._id);
 
-  const handleOnPress = (actionID, objectID) => {
-    if (actionID === "1") {
-      navigation.navigate(routes.PLAY_SONG, { _id: objectID });
-    } else if (actionID === "2") {
-      setClickedID(objectID);
-      setMoreActionsBottomSheetVisible(true);
-    }
-  };
-
   const actions = [
     {
       _id: "1",
@@ -91,6 +82,10 @@ const ArtistDetailsScreen = ({ navigation, route }) => {
         subTitleLeft={artist.albumCount}
         listTitle={"Songs"}
         listObj={songs}
+        actions={actions}
+        navigation={navigation}
+        setClickedID={setClickedID}
+        setMoreActionsBottomSheetVisible={setMoreActionsBottomSheetVisible}
       />
     </Screen>
   );
