@@ -12,7 +12,7 @@ const defaultStyles = {
     fontSize: 17,
     fontWeight: "bold",
     marginVertical: 16,
-    textTransform: "capitalize",
+    textTransform: "capitalize"
   },
   headingFlex: {
     display: "flex",
@@ -27,7 +27,8 @@ const defaultStyles = {
   },
   horizontalScroll: {
     marginBottom: 5
-  }
+  },
+  zIndex: 1,
   // gridStyle: {
   //   display: "flex",
   //   justifyContent: "center",

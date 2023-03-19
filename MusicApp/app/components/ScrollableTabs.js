@@ -9,17 +9,34 @@ import React from "react";
 import AppText from "./AppText";
 import colors from "../config/colors";
 
-const ScrollableTabs = ({ data, state, dispatch }) => {
-  
-  const activeStyle = {
-    item: {
-      borderBottomWidth: 3,
-      borderBottomColor: colors.primaryColor,
-    },
-    text: {
-      color: colors.primaryColor,
-      fontWeight: "500"
+const ScrollableTabs = ({ data, state, dispatch, isChips }) => {
+  const activeStyle = () => {
+    if (isChips) {
+      return {
+        item: {
+          borderWidth: 2,
+          borderRadius: 20,
+          borderColor: colors.primaryColor,
+          borderRadius: 20,
+          backgroundColor: colors.primaryColor
+        },
+        text: {
+          color: colors.primaryText,
+          fontWeight: "500"
+        }
+      };
     }
+
+    return {
+      item: {
+        borderBottomWidth: 3,
+        borderBottomColor: colors.primaryColor
+      },
+      text: {
+        color: colors.primaryColor,
+        fontWeight: "500"
+      }
+    };
   };
 
   return (
@@ -34,7 +51,7 @@ const ScrollableTabs = ({ data, state, dispatch }) => {
           <TouchableOpacity
             style={[
               styles.item,
-              state.active === item.name ? activeStyle.item : {}
+              state.active === item.name ? activeStyle().item : {}
             ]}
             key={index}
             onPress={() =>
@@ -44,7 +61,7 @@ const ScrollableTabs = ({ data, state, dispatch }) => {
             <AppText
               style={[
                 styles.text,
-                state.active === item.name ? activeStyle.text : {}
+                state.active === item.name ? activeStyle().text : {}
               ]}
             >
               {item.name}
@@ -52,7 +69,7 @@ const ScrollableTabs = ({ data, state, dispatch }) => {
           </TouchableOpacity>
         )}
       />
-      <View style={styles.line} />
+      {!isChips && <View style={styles.line} />}
     </View>
   );
 };
@@ -62,22 +79,28 @@ export default ScrollableTabs;
 const styles = StyleSheet.create({
   item: {
     paddingVertical: 6,
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
+    borderWidth: 2,
+    borderRadius: 20,
+    borderColor: colors.primaryColor,
+    marginRight: 14,
   },
   line: {
     position: "absolute",
     width: "100%",
     bottom: 1,
     zIndex: -1,
-    borderTopColor: colors.border100, borderTopWidth: 1, paddingBottom: -10,
+    borderTopColor: colors.border100,
+    borderTopWidth: 1,
+    paddingBottom: -10
   },
   list: {},
   tabs: {
-    position: "relative",
+    position: "relative"
   },
   text: {
     fontSize: 16,
     textTransform: "capitalize",
     color: colors.lightText
-  },
+  }
 });
