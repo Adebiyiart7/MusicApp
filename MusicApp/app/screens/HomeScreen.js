@@ -17,7 +17,7 @@ import Favorites from "../components/home/tabRenders/Favorites";
 import Folders from "../components/home/tabRenders/Folders";
 import routes from "../config/routes";
 
-const tabData = [
+export const tabData = [
   { _id: "1", name: "suggested" },
   { _id: "2", name: "songs" },
   { _id: "3", name: "artists" },

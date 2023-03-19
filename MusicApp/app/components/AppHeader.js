@@ -16,7 +16,8 @@ const AppHeader = ({
   navigation,
   RightIcon,
   RightIconExtra,
-  hasGoBack
+  hasGoBack,
+  Obj
 }) => {
   const screenWidth = Dimensions.get("screen").width;
 
@@ -39,16 +40,21 @@ const AppHeader = ({
           justifyContent: "center"
         }}
       >
-        {!hasGoBack && <Image
-          source={require("../assets/images/logo-outline.png")}
-          style={{ height: 30, width: 30}}
-        />}
-        <AppText
-          numberOfLines={1}
-          style={[styles.title, { width: screenWidth - 138 }]}
-        >
-          {title}
-        </AppText>
+        {!hasGoBack && (
+          <Image
+            source={require("../assets/images/logo-outline.png")}
+            style={{ height: 30, width: 30 }}
+          />
+        )}
+        {!Obj && (
+          <AppText
+            numberOfLines={1}
+            style={[styles.title, { width: screenWidth - 138 }]}
+          >
+            {title}
+          </AppText>
+        )}
+        {Obj && Obj}
       </View>
       {RightIcon && (
         <TouchableOpacity style={styles.right}>{RightIcon}</TouchableOpacity>

@@ -1,7 +1,6 @@
 import {
   FlatList,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View
 } from "react-native";
@@ -110,4 +109,8 @@ const Folders = () => {
 
 export default Folders;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  input: {
+    
+  }
+});
