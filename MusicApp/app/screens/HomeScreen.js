@@ -15,6 +15,7 @@ import Artists from "../components/home/tabRenders/Artists";
 import Albums from "../components/home/tabRenders/Albums";
 import Favorites from "../components/home/tabRenders/Favorites";
 import Folders from "../components/home/tabRenders/Folders";
+import routes from "../config/routes";
 
 const tabData = [
   { _id: "1", name: "suggested" },
@@ -27,7 +28,7 @@ const tabData = [
 
 const HomeScreen = ({ navigation }) => {
   const [state, dispatch] = useReducer(reducers.scrollableTabs, {
-    active: "folders"
+    active: "suggested"
   });
 
   const Render = () => {
@@ -63,7 +64,15 @@ const HomeScreen = ({ navigation }) => {
         <>
           <AppHeader
             RightIconExtra={
-              <Ionicons name="search" size={24} color={colors.primaryText} />
+              <TouchableOpacity
+                onPress={() => navigation.navigate(routes.SEARCH)}
+              >
+                <Ionicons
+                  color={colors.primaryText}
+                  size={24}
+                  name="search-outline"
+                />
+              </TouchableOpacity>
             }
             navigation={navigation}
             title={"Music"}

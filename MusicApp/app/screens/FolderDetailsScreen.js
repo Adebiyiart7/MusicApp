@@ -10,6 +10,8 @@ import BottomSheet from "../components/BottomSheet";
 import MoreActions from "../components/songs/MoreActions";
 import PlayACategory from "../components/PlayACategory";
 import folders from "../db/folrders";
+import routes from "../config/routes";
+import { TouchableOpacity } from "react-native";
 
 const ArtistDetailsScreen = ({ navigation, route }) => {
   const [clickedID, setClickedID] = useState(null);
@@ -60,11 +62,13 @@ const ArtistDetailsScreen = ({ navigation, route }) => {
         hasGoBack
         navigation={navigation}
         RightIcon={
-          <Ionicons
-            color={colors.primaryText}
-            size={24}
-            name="search-outline"
-          />
+          <TouchableOpacity onPress={() => navigation.navigate(routes.SEARCH)}>
+            <Ionicons
+              color={colors.primaryText}
+              size={24}
+              name="search-outline"
+            />
+          </TouchableOpacity>
         }
         RightIconExtra={
           <MaterialCommunityIcons

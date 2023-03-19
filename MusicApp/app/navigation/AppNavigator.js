@@ -10,6 +10,8 @@ import TabNavigator from "./TabNavigator";
 import PlaySongScreen from "../screens/PlaySongScreen";
 import ArtistDetailsScreen from "../screens/ArtistDetailsScreen";
 import FolderDetailsScreen from "../screens/FolderDetailsScreen";
+import RecentlyPlayedScreen from "../screens/RecentlyPlayedScreen";
+import SearchScreen from "../screens/SearchScreen";
 
 const Stack = createStackNavigator();
 
@@ -61,6 +63,20 @@ const AppNavigator = () => {
       <Stack.Screen
         name={routes.FOLDER_DETAILS}
         component={FolderDetailsScreen}
+        options={{
+          cardStyleInterpolator: cardStyleInterpolator
+        }}
+      />
+      <Stack.Screen
+        name={routes.RECENTLY_PLAYED}
+        component={RecentlyPlayedScreen}
+        options={{
+          cardStyleInterpolator: cardStyleInterpolator
+        }}
+      />
+      <Stack.Screen
+        name={routes.SEARCH}
+        component={SearchScreen}
         options={{
           cardStyleInterpolator: cardStyleInterpolator
         }}
