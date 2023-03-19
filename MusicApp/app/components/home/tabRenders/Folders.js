@@ -6,6 +6,7 @@ import {
   View
 } from "react-native";
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 // LOCAL IMPORTS
 import AppText from "../../AppText";
@@ -18,10 +19,11 @@ import { sortData } from "./Songs";
 import colors from "../../../config/colors";
 import folders from "../../../db/folrders";
 import Card2 from "../../cards/Card2";
+import routes from "../../../config/routes";
 
 const Folders = () => {
   const [sortBottomSheetVisible, setSortBottomSheetVisible] = useState(false);
-
+  const navigation = useNavigation();
   
   const actions = [
     {
@@ -74,22 +76,31 @@ const Folders = () => {
           data={folders}
           keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
-            <Card2
-              _id={item._id}
-              Icon={
-                <MaterialCommunityIcons
-                  name="folder"
-                  color={colors.primaryColor}
-                  size={60}
-                />
+            <TouchableOpacity
+              key={item._id}
+              onPress={() =>
+                navigation.navigate(routes.FOLDER_DETAILS, {
+                  _id: item._id
+                })
               }
-              title={item.title}
-              subTitle={{
-                left: item.numOfSongs
-              }}
-              actions={actions}
-              onPress={(actionID) => handleOnPress(actionID, item._id)}
-            />
+            >
+              <Card2
+                _id={item._id}
+                Icon={
+                  <MaterialCommunityIcons
+                    name="folder"
+                    color={colors.primaryColor}
+                    size={60}
+                  />
+                }
+                title={item.title}
+                subTitle={{
+                  left: item.numOfSongs
+                }}
+                actions={actions}
+                onPress={(actionID) => handleOnPress(actionID, item._id)}
+              />
+            </TouchableOpacity>
           )}
         />
       </View>

@@ -1,9 +1,4 @@
-import {
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  View
-} from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import React from "react";
 
 // LOCAL IMPORTS
@@ -17,6 +12,7 @@ import routes from "../config/routes";
 
 const PlayACategory = ({
   image,
+  Icon,
   title,
   subTitleLeft,
   subTitleRight,
@@ -39,10 +35,11 @@ const PlayACategory = ({
   return (
     <View>
       {image && <Image source={image} style={styles.image} />}
+      <View style={{ alignSelf: "center" }}>{Icon && Icon}</View>
       <View style={styles.primaryDetails}>
         <AppText style={styles.title}>{title}</AppText>
         <AppText style={styles.subTitle}>
-          {subTitleLeft} Albums &nbsp; |&nbsp; {subTitleRight} &nbsp; Songs
+          {subTitleLeft} {subTitleLeft && ` | `} {subTitleRight}  
           &nbsp; |&nbsp; 05:35:55 mins
         </AppText>
       </View>

@@ -78,8 +78,8 @@ const ArtistDetailsScreen = ({ navigation, route }) => {
       <PlayACategory
         image={artist.avatar}
         title={artist.name}
-        subTitleRight={artist.songCount}
-        subTitleLeft={artist.albumCount}
+        subTitleRight={`${artist.songCount} Songs`}
+        subTitleLeft={`${artist.albumCount} Albums`}
         listTitle={"Songs"}
         listObj={songs}
         actions={actions}
