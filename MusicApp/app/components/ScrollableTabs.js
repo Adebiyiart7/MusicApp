@@ -18,6 +18,7 @@ const ScrollableTabs = ({ data, state, dispatch, isChips }) => {
           borderRadius: 20,
           borderColor: colors.primaryColor,
           borderRadius: 20,
+          
           backgroundColor: colors.primaryColor
         },
         text: {
@@ -80,10 +81,6 @@ const styles = StyleSheet.create({
   item: {
     paddingVertical: 6,
     paddingHorizontal: 12,
-    borderWidth: 2,
-    borderRadius: 20,
-    borderColor: colors.primaryColor,
-    marginRight: 14,
   },
   line: {
     position: "absolute",

@@ -56,8 +56,6 @@ const Songs = () => {
   const [moreActionsBottomSheetVisible, setMoreActionsBottomSheetVisible] =
     useState(false);
 
-  const navigation = useNavigation();
-
   const clickedObject = () => {
     return songs.find((item) => item._id === clickedID);
   };

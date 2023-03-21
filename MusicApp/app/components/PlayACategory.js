@@ -54,6 +54,7 @@ const PlayACategory = ({
         </AppButton>
         <AppButton
           rounded
+          secondary
           style={[styles.button, styles.playButton]}
           textStyle={styles.buttonTextStyles}
         >
@@ -131,7 +132,6 @@ const styles = StyleSheet.create({
   },
   playButton: {
     marginLeft: 5,
-    backgroundColor: colors.border100
   },
   primaryDetails: {
     marginTop: 16
