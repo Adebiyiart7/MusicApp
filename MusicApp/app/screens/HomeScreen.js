@@ -13,7 +13,6 @@ import Suggested from "../components/home/tabRenders/Suggested";
 import Songs from "../components/home/tabRenders/Songs";
 import Artists from "../components/home/tabRenders/Artists";
 import Albums from "../components/home/tabRenders/Albums";
-import Favorites from "../components/home/tabRenders/Favorites";
 import Folders from "../components/home/tabRenders/Folders";
 import routes from "../config/routes";
 
@@ -22,8 +21,7 @@ export const tabData = [
   { _id: "2", name: "songs" },
   { _id: "3", name: "artists" },
   { _id: "4", name: "albums" },
-  { _id: "5", name: "favorites" },
-  { _id: "6", name: "folders" }
+  { _id: "5", name: "folders" }
 ];
 
 const HomeScreen = ({ navigation }) => {
@@ -46,10 +44,6 @@ const HomeScreen = ({ navigation }) => {
 
     if (state.active === "albums") {
       return <Albums />;
-    }
-
-    if (state.active === "favorites") {
-      return <Favorites />;
     }
 
     if (state.active === "folders") {
