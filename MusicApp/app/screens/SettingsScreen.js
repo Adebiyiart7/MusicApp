@@ -4,7 +4,9 @@ import {
   FontAwesome,
   Fontisto,
   Ionicons,
+  MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import { useWindowDimensions } from "react-native";
 
 // LOCAL IMPORTS
 import colors from "../config/colors";
@@ -18,12 +20,12 @@ import AppHeader from "../components/AppHeader";
 const SettingsScreen = ({ navigation }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  const dimensions = useWindowDimensions();
   const handleLogout = () => {
 };
 
   return (
     <Screen
-      scrollable={false}
       header={
         <>
           <AppHeader
@@ -31,10 +33,10 @@ const SettingsScreen = ({ navigation }) => {
               <TouchableOpacity
                 onPress={() => navigation.navigate(routes.SEARCH)}
               >
-                <Ionicons
+                <MaterialCommunityIcons
                   color={colors.primaryText}
                   size={24}
-                  name="search-outline"
+                  name="dots-horizontal-circle-outline"
                 />
               </TouchableOpacity>
             }
@@ -44,28 +46,15 @@ const SettingsScreen = ({ navigation }) => {
         </>
       }
     >
-      <View style={styles.user}>
-        <View>
-  
-          <TouchableOpacity>
-            <FontAwesome
-              name="pencil-square"
-              size={30}
-              style={styles.editPhoto}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
       <View style={styles.menu}>
-        <MenuItem title={"My Booking"} leftIcon="calendar-month" />
-        <MenuItem title={"Payments"} leftIcon="cash" />
-        <ItemSeparatorComponent style={{ marginVertical: 10 }} />
-        <MenuItem
-          title={"Profile"}
-          leftIcon="account-outline"
+        <Image
+          resizeMode="contain"
+          style={[styles.image, { width: dimensions.width - 32 }]}
+          source={require("../assets/images/premium-image.png")}
         />
+        <ItemSeparatorComponent style={{ marginVertical: 10 }} />
+        <MenuItem title={"Backup"} leftIcon="book-arrow-up-outline" />
         <MenuItem title={"Notification"} leftIcon="bell-outline" />
-        <MenuItem title={"Security"} leftIcon="shield-check-outline" />
         <MenuItem
           title={"Language"}
           subTitle={"English (US)"}
@@ -92,15 +81,15 @@ const SettingsScreen = ({ navigation }) => {
             )
           }
         />
-        <MenuItem title={"Help Center"} leftIcon="exclamation-thick" />
-        <MenuItem
-          title={"Invite Friends"}
-          leftIcon="account-supervisor-outline"
-        />
+        <MenuItem title={"Share App"} leftIcon="share-outline" />
+        <MenuItem title={"Change Log"} leftIcon="file-outline" />
+
+        <MenuItem title={"Privacy Policy"} leftIcon="security" />
+        <MenuItem title={"FAQ"} leftIcon="information-outline" />
         <MenuItem
           isLogout
           showRightIcon={false}
-          title={"Logout"}
+          title={"Quit"}
           leftIcon="logout"
           onPress={() => {
             handleLogout();
@@ -114,30 +103,7 @@ const SettingsScreen = ({ navigation }) => {
 export default SettingsScreen;
 
 const styles = StyleSheet.create({
-  avatar: {
-    borderRadius: 200,
-    height: 150,
-    width: 150
-  },
-  editPhoto: {
-    position: "absolute",
-    color: colors.primaryColor,
-    right: 0,
-    bottom: 10
-  },
-  fullname: {
-    fontWeight: "bold",
-    fontSize: 22,
-    marginTop: 10,
-    maxWidth: 280,
-    paddingBottom: 20
-  },
-  menu: {},
-  user: {
-    display: "flex",
-    alignItems: "center",
-    marginBottom: 20,
-    borderBottomColor: colors.border200,
-    borderBottomWidth: 1
+  image: {
+    marginVertical: -20
   }
 });

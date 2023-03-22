@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   leftIcon: {
     fontSize: 26,
     marginRight: 16,
-    color: colors.primaryText
+    color: colors.mediumText
   },
   menuItem: {
     display: "flex",
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   rightIcon: {
     position: "absolute",
     right: 0,
-    color: colors.primaryText,
+    color: colors.mediumText,
     fontSize: 26
   },
   subTitle: {
@@ -65,6 +65,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "500",
     fontSize: 16,
-    color: colors.primaryText
+    color: colors.mediumText
   }
 });
