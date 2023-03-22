@@ -30,7 +30,7 @@ const PlaylistScreen = ({ navigation }) => {
   const [clickedID, setClickedID] = useState(null);
   const [moreActionsBottomSheetVisible, setMoreActionsBottomSheetVisible] =
     useState(false);
-  const [showAddBottomSheet, setShowAddBottomSheet] = useState(true);
+  const [showAddBottomSheet, setShowAddBottomSheet] = useState(false);
 
   const clickedObject = () => {
     return songs.find((item) => item._id === clickedID);
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       fontSize: 20,
       textAlign: "center",
-      marginBottom: 10,
+      marginBottom: 10
     },
     input: {
       color: colors.primaryText,
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     line: {
       borderTopWidth: 1,
       borderTopColor: colors.border100,
-      marginVertical: 10,
+      marginVertical: 10
     }
   },
   addText: {
